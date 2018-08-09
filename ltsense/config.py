@@ -37,10 +37,12 @@ sample_rate = float
 
 [Transport]
   [[__many__]]
-    url = string
+    url = string(default='')
+    token = string(default='')
+    fileId = string(default='')
     pause_rate = float
     timeout = float
-    type = option('http', 'file')
+    type = option('http', 'datazar', 'file')
     directory = string(default='/tmp')
     file_extension = string(default='json')
       [[[Queue]]]
@@ -190,6 +192,7 @@ sample_rate = float
                        'm2': 'm2crypto.M2Security'},
                       'Transport':
                       {'http': 'http.QueuedHttpPostTransport',
+		       'datazar':'datazar.QueuedDatazarTransport',
                        'file': 'localfile.LocalFileTransport'},
                       'Data':
                       {'sense.xml': 'SenseXMLDataHandler',
